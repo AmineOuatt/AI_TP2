@@ -12,13 +12,13 @@ sys.path.insert(0, os.path.join(BASE_DIR, "utils"))
 from algorithms.random_search import random_search
 from algorithms.local_search import local_search
 from algorithms.hill_climbing import hill_climbing
-from utils.tsp_utils import load_cities, total_distance, distance
+from utils.tsp_utils import load_cities, distance
 
 # ------------------------------------------------------
 class TSPApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Projet 2 - Métaheuristiques TSP (USTHB)")
+        self.root.title("Projet 2 - Métaheuristiques")
         self.root.geometry("1250x780")
         self.root.resizable(True, True)
 
@@ -38,9 +38,9 @@ class TSPApp:
 
         # Buttons
         tk.Label(self.left_frame, text="⚙️ Choisissez un algorithme :", font=("Arial", 13, "bold"), bg="#f0f0f0").pack(pady=15)
-        ttk.Button(self.left_frame, text="🔹 Recherche Aléatoire", command=lambda: self.run_algo("Random"), width=28).pack(pady=6)
-        ttk.Button(self.left_frame, text="🔹 Recherche Locale", command=lambda: self.run_algo("Local"), width=28).pack(pady=6)
-        ttk.Button(self.left_frame, text="🔹 Hill Climbing", command=lambda: self.run_algo("Hill"), width=28).pack(pady=6)
+        ttk.Button(self.left_frame, text="Recherche Aléatoire", command=lambda: self.run_algo("Random"), width=28).pack(pady=6)
+        ttk.Button(self.left_frame, text="Recherche Locale", command=lambda: self.run_algo("Local"), width=28).pack(pady=6)
+        ttk.Button(self.left_frame, text="Hill Climbing", command=lambda: self.run_algo("Hill"), width=28).pack(pady=6)
 
         ttk.Separator(self.left_frame, orient="horizontal").pack(fill="x", pady=15)
 
