@@ -41,6 +41,9 @@ class TSPApp:
         ttk.Button(self.left_frame, text="Recherche Aléatoire", command=lambda: self.run_algo("Random"), width=28).pack(pady=6)
         ttk.Button(self.left_frame, text="Recherche Locale", command=lambda: self.run_algo("Local"), width=28).pack(pady=6)
         ttk.Button(self.left_frame, text="Hill Climbing", command=lambda: self.run_algo("Hill"), width=28).pack(pady=6)
+        ttk.Button(self.left_frame, text=" Simulated Annealing",command=lambda: self.run_algo("SA"), width=25).pack(pady=6)
+        ttk.Button(self.left_frame, text=" Tabu Search",command=lambda: self.run_algo("Tabu"), width=25).pack(pady=6)
+        ttk.Button(self.left_frame, text=" Genetic Algorithm",command=lambda: self.run_algo("GA"), width=25).pack(pady=6)
 
         ttk.Separator(self.left_frame, orient="horizontal").pack(fill="x", pady=15)
 
