@@ -88,7 +88,7 @@ class TSPApp:
             self.path, self.best_dist = simulated_annealing(self.cities, max_iterations=10000,callback= None)
         elif algo == "Tabu":
             from algorithms.tabu_search import tabu_search
-            self.path, self.best_dist = tabu_search(cities, tabu_tenure=10)
+            self.path, self.best_dist = tabu_search(self.cities, tabu_tenure=10)
         elif algo == "GA":
             from algorithms.genetic_algorithm import genetic_algorithm
             self.path, self.best_dist = genetic_algorithm(self.cities, population_size=50, generations=200, mutation_rate=0.1)
