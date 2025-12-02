@@ -16,6 +16,7 @@ def mutate(route, prob=0.1):
     if random.random() < prob:
         a, b = random.sample(range(1, len(route)), 2)
         route[a], route[b] = route[b], route[a]
+    return route
 
 
 def genetic_algorithm(cities, population_size=30, generations=200, mutation_rate=0.1, callback=None):
