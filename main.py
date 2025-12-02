@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from algorithms.simulated_annealing import simulated_annealing
 
 # --- Fix imports ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -81,8 +82,16 @@ class TSPApp:
             self.path, self.best_dist = random_search(self.cities, iterations=500)
         elif algo == "Local":
             self.path, self.best_dist = local_search(self.cities, iterations=500)
-        else:
+        elif algo == "Hill":
             self.path, self.best_dist = hill_climbing(self.cities, max_iterations=500)
+        elif algo == "SA":
+            self.path, self.best_dist = simulated_annealing(self.cities, max_iterations=10000,callback= None)
+        elif algo == "Tabu":
+            from algorithms.tabu_search import tabu_search
+            self.path, self.best_dist = tabu_search(self.cities, tabu_size=10, max_iterations=500)
+        elif algo == "GA":
+            from algorithms.genetic_algorithm import genetic_algorithm
+            self.path, self.best_dist = genetic_algorithm(self.cities, population_size=50, generations=200, mutation_rate=0.1)
 
         # Ensure the path ends back at Alger (for display)
         self.path.append(self.path[0])
@@ -93,7 +102,8 @@ class TSPApp:
         self.current_index = 1
         self.partial_distance = 0.0
         self.clear_plot()
-        self.plot_step(0, 1)
+        self.show_next_step()  # instead of self.plot_step(0,1)
+
 
     # ------------------------------------------------------
     def clear_plot(self):
