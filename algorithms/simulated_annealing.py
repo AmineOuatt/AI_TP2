@@ -3,9 +3,7 @@ import math
 from utils.tsp_utils import total_distance
 
 def simulated_annealing(cities, max_iterations, callback=None):
-    """
-    Recuit Simulé selon le polycopié Prof. Larabi
-    """
+    
     # Départ obligatoire depuis Alger
     start_city = cities[0]
     other_cities = cities[1:]
@@ -35,7 +33,7 @@ def simulated_annealing(cities, max_iterations, callback=None):
         neighbor_cost = total_distance(neighbor_path)
         
         # dE = F(n') - F(n) si on maximise
-        # Mais ici on MINIMISE, donc dE = F(n) - F(n')
+   
         dE = current_cost - neighbor_cost
         
         # --- Décision d'acceptation  ---

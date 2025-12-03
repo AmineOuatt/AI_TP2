@@ -1,15 +1,13 @@
 import random
 from utils.tsp_utils import total_distance
 
-def crossover(parent1, parent2):
-    """Partie centrale du parent1 + complétée par parent2"""
+def crossover(p1, p2):
     start = 1
-    end = random.randint(2, len(parent1) - 1)
+    end = random.randint(2, len(p1) - 1)
+    middle = p1[start:end]
+    remaining = [city for city in p2 if city not in middle]
 
-    middle = parent1[start:end]
-    remaining = [city for city in parent2 if city not in middle]
-
-    return [parent1[0]] + middle + remaining
+    return [p1[0]] + middle + remaining
 
 
 def mutate(route, prob=0.1):
@@ -17,7 +15,6 @@ def mutate(route, prob=0.1):
         a, b = random.sample(range(1, len(route)), 2)
         route[a], route[b] = route[b], route[a]
     return route
-
 
 def genetic_algorithm(cities, population_size=30, generations=200, mutation_rate=0.1, callback=None):
     start = cities[0]
@@ -47,9 +44,9 @@ def genetic_algorithm(cities, population_size=30, generations=200, mutation_rate
         # Croisement
         while len(next_gen) < population_size:
             p1, p2 = random.sample(survivors, 2)
-            child = crossover(p1, p2)
-            mutate(child, mutation_rate)
-            next_gen.append(child)
+            C = crossover(p1, p2)
+            mutate(C, mutation_rate)
+            next_gen.append(C)
 
         population = next_gen
 
